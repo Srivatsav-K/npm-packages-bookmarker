@@ -1,11 +1,9 @@
-import { useState, lazy, Suspense } from "react"
+import { useState, } from "react"
 import { useSelector } from "react-redux"
 //----------------------------------------------------------------------------------
-//import PackageForm from "./PackageForm"
+import PackageForm from "./PackageForm"
 import Search from "./Search"
 //----------------------------------------------------------------------------------
-
-const PackageForm = lazy(() => import('./PackageForm'))
 
 const AddFavourite = () => {
     const [search, setSearch] = useState('')
@@ -25,9 +23,15 @@ const AddFavourite = () => {
         <div className="space-y-10">
             <Search value={search} onChange={handleSearchChange} />
 
-            <Suspense fallback={<div className="text-center">Loading...</div>}>
+
+            {packages.length === 0 ? (
+                <div>
+                    Loading ....
+                </div>
+            ) : (
                 <PackageForm filteredData={filteredData} />
-            </Suspense>
+            )}
+
         </div>
     )
 }
