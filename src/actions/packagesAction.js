@@ -11,15 +11,13 @@ const getPackages = (data) => {
 //-----------------------------------------------------
 
 export const startGetPackages = () => {
-    return ((dispatch) => {
-        axios.get('https://api.npms.io/v2/search?q=reactjs')
-            .then((response) => {
-                const result = response.data.results
-                dispatch(getPackages(result))
-            })
-            .catch((err) => {
-                alert(err.message)
-            })
+    return (async (dispatch) => {
+        try {
+            const response = await axios.get('https://api.npms.io/v2/search?q=reactjs')
+            dispatch(getPackages(response.data.results))
+        } catch (err) {
+            alert(err.message)
+        }
     })
 }
 
