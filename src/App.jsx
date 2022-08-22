@@ -1,20 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
-//----------------------------------------------------------------------------------
-import { startGetPackages } from "./actions/packagesAction";
 //----------------------------------------------------------------------------------
 import AddFavourite from "./pages/add-favourite/AddFavourite";
 import Home from "./pages/home/Home";
 //----------------------------------------------------------------------------------
 
 function App() {
-  const dispatch = useDispatch()
   const favPackages = useSelector((state) => state.favPackages)
-
-  useEffect(() => {
-    dispatch(startGetPackages())
-  }, [dispatch])
 
   useEffect(() => {
     localStorage.setItem('favPackages', JSON.stringify(favPackages))
