@@ -12,7 +12,7 @@ import Reason from './Reason'
 
 
 const PackageForm = (props) => {
-    const { filteredData, history } = props
+    const { filteredData, history, search } = props
 
     const [favPackage, setFavPackage] = useState('')
     const [reason, setReason] = useState('')
@@ -77,11 +77,17 @@ const PackageForm = (props) => {
         >
             {/*Radio (select the npm package)*/}
             <div>
-                <SelectPackage
-                    value={favPackage}
-                    onChange={handleChange}
-                    data={filteredData}
-                />
+                {(search.length > 0) ? (
+                    <SelectPackage
+                        value={favPackage}
+                        onChange={handleChange}
+                        data={filteredData}
+                    />
+                ) : (
+                    <div className='text-gray-500'>
+                        Start searching to see results..
+                    </div>
+                )}
                 {error.favPackage && (
                     <div className='text-red-600 flex justify-center'>
                         {error.favPackage}

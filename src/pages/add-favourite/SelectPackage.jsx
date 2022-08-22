@@ -16,7 +16,7 @@ const SelectPackage = (props) => {
                 Results
             </h4>
 
-            <div className="max-h-[12rem] overflow-y-scroll" >
+            <div className="h-[12rem] overflow-y-scroll" >
                 {
                     (packages.loading) ? (
                         <div>

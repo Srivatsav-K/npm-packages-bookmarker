@@ -14,7 +14,9 @@ const AddFavourite = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(startGetPackages(search))
+        if (search.length > 0) {
+            dispatch(startGetPackages(search))
+        }
     }, [search, dispatch])
 
     const handleSearchChange = (e) => {
@@ -26,7 +28,7 @@ const AddFavourite = () => {
         <div className="space-y-10">
             <Search value={search} onChange={handleSearchChange} />
 
-            <PackageForm filteredData={packages.data} />
+            <PackageForm filteredData={packages.data} search={search} />
         </div>
     )
 }

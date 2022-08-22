@@ -30,7 +30,7 @@ export const startGetPackages = (search) => {
 
             dispatch(resultsLoadingTrue())
 
-            const response = await axios.get(`https://api.npms.io/v2/search?q=${(search) ? (search) : 'reactjs'}`)
+            const response = await axios.get(`https://api.npms.io/v2/search?q=${search}`)
 
             dispatch(resultsLoadingFalse())
 
