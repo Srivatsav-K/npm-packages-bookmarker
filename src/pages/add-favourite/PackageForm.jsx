@@ -120,6 +120,7 @@ const PackageForm = (props) => {
 }
 
 PackageForm.propTypes = {
+    search: PropTypes.string,
     filteredData: PropTypes.array,
     history: PropTypes.object
 }
